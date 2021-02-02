@@ -3,15 +3,15 @@ applications:
 - name: heimdall2
   instances: 1
   memory: 2G
+  disk_quota: 6G
   buildpacks: 
     - nodejs_buildpack
-    - https://github.com/starkandwayne/pancake-buildpack
   services:
     - heimdall2-db  
   env:
     NODE_ENV: production
-    PGSSLMODE: require
     POSTGRES_DB: heimdall2-db
     # Update before deploying or use .env file with dotenv node package
     ADMIN_PASSWORD: ChangeMe123*
-  command: yarn run start
+    # run $ openssl rand -hex 64
+  command: bash setup-docker-secrets.sh && yarn run start
