@@ -13,5 +13,7 @@ applications:
     POSTGRES_DB: heimdall2-db
     # Update before deploying or use .env file with dotenv node package
     ADMIN_PASSWORD: ChangeMe123*
-    # run $ openssl rand -hex 64
+    DATABASE_SSL: true
+    DATABASE_URL: $DATABASE_URL
+    PGSSLMODE: require
   command: bash setup-docker-secrets.sh && yarn run start
