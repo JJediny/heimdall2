@@ -4,16 +4,22 @@ applications:
   instances: 1
   memory: 2G
   disk_quota: 6G
-  buildpacks: 
+  buildpacks:
     - nodejs_buildpack
+    - https://github.com/starkandwayne/pancake-buildpack
   services:
     - heimdall2-db  
   env:
     NODE_ENV: production
     POSTGRES_DB: heimdall2-db
     # Update before deploying or use .env file with dotenv node package
-    ADMIN_PASSWORD: ChangeMe123*
+    ADMIN_PASSWORD: changeme
     DATABASE_SSL: true
     DATABASE_URL: $DATABASE_URL
     PGSSLMODE: require
-  command: bash setup-docker-secrets.sh && yarn run start
+  # db:create not needed, broker already does it.
+  command: >-
+    sleep 1200 &&
+    yarn backend sequelize-cli db:migrate && 
+    yarn backend sequelize-cli db:seed:all && 
+    bash setup-docker-secrets.sh && yarn run start
