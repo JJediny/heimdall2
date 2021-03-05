@@ -18,7 +18,7 @@
     "test:ui": "cypress run",
     "test:ui:open": "cypress open"
   },
-  "dependencies": {
+  "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.8.0",
     "@typescript-eslint/parser": "^4.8.0",
     "eslint": "^7.13.0",

@@ -163,6 +163,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "user@example.com
 # Upload evaluation
 curl -F "data=@Evaluation.json" -F "filename=Your Filename" -F "public=true/false" -H "Authorization: Bearer bearertokengoeshere" "http://localhost:3000/evaluations"
 ```
+### Deploy to [Cloud.gov](/docs/cloudgov.md)
 
 
 
